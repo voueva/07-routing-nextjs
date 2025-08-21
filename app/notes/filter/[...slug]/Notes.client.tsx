@@ -61,6 +61,7 @@ const NotesClient = ({ initialData, initialQuery, initialPage, initialTag }: Not
       </div>
 
       <NoteList notes={data.notes} />
+      
       <Toaster />
 
       {showModal && (
