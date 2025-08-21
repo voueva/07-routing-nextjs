@@ -1,21 +1,40 @@
 import { Note } from "@/types/note";
 import axios from "axios";
 
+export type Tag =
+    'Work' |
+    'Personal' |
+    'Meeting' |
+    'Shopping' |
+    'Todo';
+
+export const TagList: Array<Tag | 'All'> = [
+    'All',
+    'Work',
+    'Personal',
+    'Meeting',
+    'Shopping',
+    'Todo'
+];
+
 export interface NoteListParams  {
     page: number;
     perPage: number;
     search?: string;
+    tag?: Tag;
 }
 export interface NoteListResponse {
     notes: Array<Note>;
     totalPages: number;
 }
 
+// https://notehub-public.goit.study/api/docs/
+
 const API_URL = 'https://notehub-public.goit.study/api/notes';
 
 const perPage = 10;
 
-export const fetchNotes = async (search: string, page: number): Promise<NoteListResponse> => {
+export const fetchNotes = async (search: string, page: number, tag?: Tag | null): Promise<NoteListResponse> => {
     let params: NoteListParams = {
         page,
         perPage
@@ -25,6 +44,13 @@ export const fetchNotes = async (search: string, page: number): Promise<NoteList
         params = {
             ...params,
             search
+        };
+    }
+
+    if (tag) {
+        params = {
+            ...params,
+            tag
         };
     }
 
@@ -98,4 +124,9 @@ export const getSingleNote = async (id: string) => {
         console.error('Error fetching data:', error);
         throw error;
     }
-  };
+};
+
+export const getCategories = async () => {
+    const res = await axios<Category[]>('/categories');
+    return res.data;
+};
