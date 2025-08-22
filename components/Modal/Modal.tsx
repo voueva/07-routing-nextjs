@@ -1,19 +1,24 @@
 
+'use client';
+
 import { createPortal } from 'react-dom'
 import css from './NoteModal.module.css'
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface ModalProps {
   children: React.ReactNode;
-  onClose: () => void;
 }
 
-export default function Modal({ children, onClose }: ModalProps) {
+export default function Modal({ children }: ModalProps) {
+  const router = useRouter();
+  
+  const close = () => router.back();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        close();
       }
     };
 
@@ -24,11 +29,11 @@ export default function Modal({ children, onClose }: ModalProps) {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [onClose]);
+  }, []);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      close();
     }
   };
 
@@ -46,3 +51,4 @@ export default function Modal({ children, onClose }: ModalProps) {
     document.body
   );
 }
+
