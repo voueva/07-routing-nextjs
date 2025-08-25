@@ -9,14 +9,14 @@ export default function TagsMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={css.menuContainer} onClick={() => { setIsOpen(!isOpen) }}>
-      <button className={css.menuButton}>
+    <div className={css.menuContainer}>
+      <button className={css.menuButton} onClick={() => { setIsOpen(!isOpen) }}>
         Notes ▾
       </button>
       <ul className={`${css.menuList} ${isOpen ? '' : css.hidden}`}>
         {
           TagList.map(item => (
-            <li key={item} className={css.menuItem}>
+            <li key={item} className={css.menuItem} onClick={() => { setIsOpen(!isOpen) }}>
               <Link href={'/notes/filter/' + item} className={css.menuLink}>
                 {item}
               </Link>
