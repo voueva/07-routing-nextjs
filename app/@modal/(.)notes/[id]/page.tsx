@@ -2,6 +2,7 @@
 
 import Modal from '@/components/Modal/Modal';
 import { getSingleNote } from '@/lib/api';
+import NotePreviewClient from './NotePreview.client';
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -13,8 +14,7 @@ const NotePreview = async ({ params }: Props) => {
 
   return (
     <Modal>
-      <h2>{note.title}</h2>
-      <p>{note.content}</p>
+      <NotePreviewClient note={note} />
     </Modal>
   );
 };
