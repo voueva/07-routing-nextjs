@@ -65,7 +65,7 @@ const NotesClient = ({ initialData, initialQuery, initialPage, initialTag }: Not
       <Toaster />
 
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal>
           <NoteForm onClose={() => setShowModal(false)} />
         </Modal>
       )}
