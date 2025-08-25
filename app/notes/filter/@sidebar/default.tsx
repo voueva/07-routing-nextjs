@@ -10,7 +10,7 @@ const NotesSidebar = async () => {
   return (
     <ul className={css.menuList}>
       {categories.map((category) => (
-        <li className={css.menuItem}>
+        <li key={category} className={css.menuItem}>
           <Link className={css.menuLink} href={`/notes/filter/${category}`}>{category}</Link>
         </li>
       ))}

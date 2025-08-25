@@ -11,7 +11,7 @@ export default function TagsMenu() {
         <ul className={css.menuList}>
           {
             TagList.map(item => (
-              <li className={css.menuItem}>
+              <li key={item} className={css.menuItem}>
                 <Link href={'/notes/filter/' + item} className={css.menuLink}>
                   {item}
                 </Link>

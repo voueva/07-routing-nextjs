@@ -4,7 +4,7 @@
 import { createPortal } from 'react-dom'
 import css from './NoteModal.module.css'
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface ModalProps {
   children: React.ReactNode;
