@@ -46,6 +46,7 @@ export default function Modal({ children }: ModalProps) {
     >
       <div className={css.modal}>
         {children}
+        <button onClick={close}>Close</button>
       </div>
     </div>,
     document.body
