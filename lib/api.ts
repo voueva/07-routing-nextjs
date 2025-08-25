@@ -125,8 +125,3 @@ export const getSingleNote = async (id: string) => {
         throw error;
     }
 };
-
-export const getCategories = async () => {
-    const res = await axios<Category[]>('/categories');
-    return res.data;
-};
